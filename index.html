@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MirrorVote — AI ассистент выбора одежды</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui;margin:0;color:#0f172a;background:#ffffff}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 40px;border-bottom:1px solid #eee;position:sticky;top:0;background:white;z-index:10}
+.logo{font-weight:800;font-size:20px}
+nav a{margin-left:24px;text-decoration:none;color:#334155;font-weight:500}
+.btn-primary{background:#4f46e5;color:white;padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:600}
+.btn-outline{border:1px solid #4f46e5;color:#4f46e5;padding:13px 20px;border-radius:10px;text-decoration:none;margin-left:10px}
+.hero{padding:120px 20px 80px;text-align:center;max-width:1100px;margin:auto}
+.hero h1{font-size:64px;line-height:1.05;margin-bottom:18px;font-weight:800}
+.hero p{font-size:20px;color:#475569;max-width:720px;margin:auto}
+.cta{margin-top:40px}
+.badge{display:inline-block;background:#eef2ff;color:#4338ca;padding:6px 12px;border-radius:20px;font-size:13px;margin-bottom:20px}
+.hero-product{margin-top:60px;border-radius:18px;background:linear-gradient(135deg,#eef2ff,#f8fafc);padding:60px}
+.hero-product img{max-width:100%;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.15)}
+.section{padding:100px 20px;max-width:1200px;margin:auto}
+.section h2{text-align:center;font-size:40px;margin-bottom:16px}
+.section p.subtitle{text-align:center;color:#475569;max-width:700px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px;margin-top:50px}
+.card{padding:32px;border-radius:18px;border:1px solid #e2e8f0;background:white;transition:0.25s}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.06)}
+.card h3{margin-top:0;font-size:20px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:60px}
+.step{padding:30px;border-radius:18px;background:#f8fafc;border:1px solid #e2e8f0}
+.step-number{font-weight:700;color:#6366f1;margin-bottom:10px}
+.demo-section{background:#0f172a;color:white;border-radius:28px;padding:80px;margin-top:60px;text-align:center}
+.demo-section h3{font-size:32px;margin-bottom:20px}
+.demo-box{margin-top:30px;background:#1e293b;border-radius:16px;padding:50px;font-size:20px}
+.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:50px}
+.testimonial{background:#f8fafc;padding:30px;border-radius:16px;border:1px solid #e2e8f0}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:50px}
+.price-card{border:1px solid #e2e8f0;border-radius:18px;padding:40px;background:white;text-align:center}
+.price{font-size:42px;font-weight:800;margin:12px 0}
+.price small{font-size:16px;color:#64748b}
+.waitlist{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;padding:100px 20px;text-align:center;margin-top:80px}
+.waitlist input{padding:14px;border:none;border-radius:8px;width:260px;margin-right:10px}
+.waitlist button{padding:14px 22px;border:none;border-radius:8px;background:#111827;color:white;font-weight:600}
+footer{text-align:center;padding:50px 20px;color:#64748b}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">MirrorVote</div>
+<nav>
+<a href="#product">Продукт</a>
+<a href="#how">Как работает</a>
+<a href="#features">Функции</a>
+<a href="#pricing">Цены</a>
+<a class="btn-primary" href="#waitlist">Попробовать</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="badge">AI Fashion Assistant</div>
+<h1>Не знаешь
+что надеть?</h1>
+<p>Загрузи несколько фото и получи AI‑оценку нарядов. MirrorVote помогает выбрать лучший образ за секунды.</p>
+<div class="cta">
+<a class="btn-primary" href="#waitlist">Попробовать бесплатно</a>
+<a class="btn-outline" href="#product">Смотреть продукт</a>
+</div>
+
+<div class="hero-product">
+<img src="https://dummyimage.com/900x500/f1f5f9/64748b&text=Product+Screenshot" />
+</div>
+</section>
+
+<section id="product" class="section">
+<h2>AI помощник в примерочной</h2>
+<p class="subtitle">Сравнивайте образы, получайте рекомендации и принимайте решение быстрее</p>
+
+<div class="grid">
+<div class="card">
+<h3>📸 Загружайте фото</h3>
+<p>Сфотографируйте наряды в примерочной или дома.</p>
+</div>
+
+<div class="card">
+<h3>🤖 AI анализирует</h3>
+<p>Алгоритм оценивает стиль, сочетание одежды и контекст события.</p>
+</div>
+
+<div class="card">
+<h3>⭐ Лучший образ</h3>
+<p>Получите рекомендацию и выберите лучший вариант.</p>
+</div>
+</div>
+</section>
+
+<section id="how" class="section">
+<h2>Как это работает</h2>
+<p class="subtitle">3 шага чтобы выбрать идеальный образ</p>
+
+<div class="steps">
+<div class="step">
+<div class="step-number">Шаг 1</div>
+<h3>Загрузите фото</h3>
+<p>Добавьте 1–6 фотографий нарядов.</p>
+</div>
+
+<div class="step">
+<div class="step-number">Шаг 2</div>
+<h3>AI анализирует</h3>
+<p>Система улучшает фото и анализирует стиль.</p>
+</div>
+
+<div class="step">
+<div class="step-number">Шаг 3</div>
+<h3>Получите результат</h3>
+<p>Выберите лучший образ или спросите друзей.</p>
+</div>
+</div>
+
+<div class="demo-section">
+<h3>AI Demo</h3>
+<div class="demo-box">
+📸 Outfit A vs Outfit B → 🤖 AI Score → ⭐ Winner
+</div>
+</div>
+</section>
+
+<section id="features" class="section">
+<h2>Функции</h2>
+<p class="subtitle">Все инструменты чтобы выбрать лучший наряд</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>AI рекомендации</h3>
+<p>Оценка образа для офиса, свидания или вечеринки.</p>
+</div>
+
+<div class="card">
+<h3>Сравнение нарядов</h3>
+<p>Просматривайте образы в карусели.</p>
+</div>
+
+<div class="card">
+<h3>Голосование друзей</h3>
+<p>Отправьте ссылку и получите оценки.</p>
+</div>
+
+<div class="card">
+<h3>Simple Look</h3>
+<p>AI улучшает фото: чистый фон и студийный свет.</p>
+</div>
+
+<div class="card">
+<h3>Экспорт</h3>
+<p>Создайте коллаж и поделитесь результатом.</p>
+</div>
+
+<div class="card">
+<h3>Быстрые решения</h3>
+<p>Экономьте время при выборе одежды.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2>Отзывы пользователей</h2>
+<p class="subtitle">Что говорят первые пользователи</p>
+
+<div class="testimonials">
+
+<div class="testimonial">
+<p>"Теперь я выбираю наряд за минуту. Очень удобно перед выходом."</p>
+<strong>Анна</strong>
+</div>
+
+<div class="testimonial">
+<p>"Функция голосования друзей — гениальная идея."</p>
+<strong>Михаил</strong>
+</div>
+
+<div class="testimonial">
+<p>"AI действительно помогает понять какой образ лучше."</p>
+<strong>Елена</strong>
+</div>
+
+</div>
+</section>
+
+<section id="pricing" class="section">
+<h2>Простая цена</h2>
+<p class="subtitle">Начните бесплатно</p>
+
+<div class="pricing">
+
+<div class="price-card">
+<h3>Free</h3>
+<div class="price">$0</div>
+<p>5 AI анализов</p>
+<p>Сравнение образов</p>
+<p>Голосование друзей</p>
+</div>
+
+<div class="price-card">
+<h3>Pro</h3>
+<div class="price">$8 <small>/ месяц</small></div>
+<p>Неограниченные анализы</p>
+<p>AI рекомендации</p>
+<p>Экспорт результатов</p>
+</div>
+
+</div>
+</section>
+
+<section id="waitlist" class="waitlist">
+<h2>Попробуйте MirrorVote</h2>
+<p>Оставьте email чтобы получить ранний доступ</p>
+<br/>
+<input placeholder="Ваш email" />
+<button>Join waitlist</button>
+</section>
+
+<footer>
+© 2026 MirrorVote · AI ассистент выбора одежды
+</footer>
+
+</body>
+</html>
