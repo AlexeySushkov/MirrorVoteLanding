@@ -1,231 +1,494 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MirrorVote — AI ассистент выбора одежды</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box}
-body{font-family:Inter,system-ui;margin:0;color:#0f172a;background:#ffffff}
-header{display:flex;justify-content:space-between;align-items:center;padding:22px 40px;border-bottom:1px solid #eee;position:sticky;top:0;background:white;z-index:10}
-.logo{font-weight:800;font-size:20px}
-nav a{margin-left:24px;text-decoration:none;color:#334155;font-weight:500}
-.btn-primary{background:#4f46e5;color:white;padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:600}
-.btn-outline{border:1px solid #4f46e5;color:#4f46e5;padding:13px 20px;border-radius:10px;text-decoration:none;margin-left:10px}
-.hero{padding:120px 20px 80px;text-align:center;max-width:1100px;margin:auto}
-.hero h1{font-size:64px;line-height:1.05;margin-bottom:18px;font-weight:800}
-.hero p{font-size:20px;color:#475569;max-width:720px;margin:auto}
-.cta{margin-top:40px}
-.badge{display:inline-block;background:#eef2ff;color:#4338ca;padding:6px 12px;border-radius:20px;font-size:13px;margin-bottom:20px}
-.hero-product{margin-top:60px;border-radius:18px;background:linear-gradient(135deg,#eef2ff,#f8fafc);padding:60px}
-.hero-product img{max-width:100%;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.15)}
-.section{padding:100px 20px;max-width:1200px;margin:auto}
-.section h2{text-align:center;font-size:40px;margin-bottom:16px}
-.section p.subtitle{text-align:center;color:#475569;max-width:700px;margin:auto}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px;margin-top:50px}
-.card{padding:32px;border-radius:18px;border:1px solid #e2e8f0;background:white;transition:0.25s}
-.card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.06)}
-.card h3{margin-top:0;font-size:20px}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:60px}
-.step{padding:30px;border-radius:18px;background:#f8fafc;border:1px solid #e2e8f0}
-.step-number{font-weight:700;color:#6366f1;margin-bottom:10px}
-.demo-section{background:#0f172a;color:white;border-radius:28px;padding:80px;margin-top:60px;text-align:center}
-.demo-section h3{font-size:32px;margin-bottom:20px}
-.demo-box{margin-top:30px;background:#1e293b;border-radius:16px;padding:50px;font-size:20px}
-.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:50px}
-.testimonial{background:#f8fafc;padding:30px;border-radius:16px;border:1px solid #e2e8f0}
-.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:50px}
-.price-card{border:1px solid #e2e8f0;border-radius:18px;padding:40px;background:white;text-align:center}
-.price{font-size:42px;font-weight:800;margin:12px 0}
-.price small{font-size:16px;color:#64748b}
-.waitlist{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;padding:100px 20px;text-align:center;margin-top:80px}
-.waitlist input{padding:14px;border:none;border-radius:8px;width:260px;margin-right:10px}
-.waitlist button{padding:14px 22px;border:none;border-radius:8px;background:#111827;color:white;font-weight:600}
-footer{text-align:center;padding:50px 20px;color:#64748b}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MirrorVote — стильный выбор за минуту</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#2b2b2b;
+      --ink-2:#4a4a4a;
+      --paper:#f6f1ea;
+      --paper-2:#efe7dd;
+      --line:#e3d8cc;
+      --sand:#e9e0d6;
+      --accent:#7d7a75;
+      --shadow:0 18px 45px rgba(30,20,10,0.18);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Josefin Sans", system-ui, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 520px at 80% 0%, #f9f4ee 0%, transparent 60%),
+        radial-gradient(700px 520px at 0% 10%, #f4ede6 0%, transparent 60%),
+        linear-gradient(180deg,#f7f2ea 0%,#f3ede5 70%,#efe7dd 100%);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+    header{
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(10px) saturate(1.1);
+      background:rgba(246,241,234,0.9);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 0;
+    }
+    .logo{
+      font-family:"Playfair Display", serif;
+      font-weight:600;font-size:18px;letter-spacing:0.4px;
+    }
+    .logo span{
+      display:block;
+      font-family:"Josefin Sans", system-ui, sans-serif;
+      font-size:12px;
+      letter-spacing:0.02em;
+      color:#8a837c;
+      margin-top:4px;
+    }
+    .nav-links a{margin-left:18px;color:var(--ink-2);font-weight:600;font-size:14px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 16px;border-radius:12px;
+      border:1px solid var(--ink);font-weight:600;
+      background:transparent;
+      transition:transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 24px rgba(30,20,10,0.12);
+    }
+    .btn.primary{
+      background:#fff;border-color:#cfc3b6;color:#2b2b2b;
+      box-shadow:none;
+    }
+    .hero{
+      padding:84px 0 36px;
+      position:relative;overflow:hidden;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.05fr 0.95fr;gap:28px;align-items:center;
+    }
+    h1{
+      font-family:"Josefin Sans", system-ui, sans-serif;
+      font-size:54px;line-height:1.05;margin:0 0 16px;
+      letter-spacing:0.02em;text-transform:uppercase;
+    }
+    .lead{font-size:18px;color:#5a554f;max-width:560px}
+    .hero-ctas{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+    .hero-panel{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:18px;padding:16px;box-shadow:var(--shadow);
+      position:relative;
+    }
+    .hero-shot{
+      width:100%;border-radius:16px;border:1px solid var(--line);
+      box-shadow:0 16px 40px rgba(30,20,10,0.16);
+      display:block;background:#fff;
+      transition:transform 0.2s, box-shadow 0.2s;
+      cursor:zoom-in;
+    }
+    .hero-shot:hover{
+      transform:translateY(-6px);
+      box-shadow:0 22px 50px rgba(30,20,10,0.2);
+    }
+    .section{padding:72px 0}
+    .section h2{
+      font-family:"Playfair Display", serif;font-size:30px;margin:0 0 10px;
+    }
+    .section p.sub{color:#6b655e;max-width:760px}
+    .grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;margin-top:24px;
+      align-items:stretch;
+    }
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:16px;
+      padding:18px;transition:transform 0.2s, box-shadow 0.2s;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      height:100%;
+    }
+    .card.wide{
+      grid-column:1 / -1;
+      height:auto;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(30,20,10,0.12)}
+    .pill{
+      display:inline-block;padding:6px 10px;border-radius:999px;
+      background:#f1e7dd;border:1px solid var(--line);font-size:12px;color:#6b655e;
+    }
+    .mode-row{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:12px;
+      margin-top:12px;
+    }
+    .mode-row img{
+      width:100%;
+      border-radius:12px;
+      border:1px solid var(--line);
+      box-shadow:0 12px 30px rgba(30,20,10,0.12);
+      display:block;
+      background:#fff;
+      cursor:zoom-in;
+    }
+    .steps{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;margin-top:24px;
+    }
+    .step{
+      background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+    .step:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 40px rgba(30,20,10,0.12);
+    }
+    .step img{
+      width:100%;
+      border-radius:14px;
+      border:1px solid var(--line);
+      box-shadow:0 12px 30px rgba(30,20,10,0.12);
+      display:block;
+      margin:10px 0 12px;
+      background:#fff;
+      cursor:zoom-in;
+    }
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(20,16,12,0.7);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:50;
+      padding:24px;
+    }
+    .lightbox.active{display:flex;}
+    .lightbox img{
+      max-width:min(1100px,92vw);
+      max-height:88vh;
+      border-radius:16px;
+      box-shadow:0 30px 80px rgba(0,0,0,0.35);
+      background:#fff;
+    }
+    .lightbox-close{
+      position:absolute;
+      top:18px;
+      right:22px;
+      font-size:26px;
+      color:#fff;
+      background:transparent;
+      border:none;
+      cursor:pointer;
+    }
+    .step .num{
+      width:34px;height:34px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      background:#2b2b2b;color:#fff;font-weight:600;margin-bottom:10px;
+    }
+    .gallery{
+      display:grid;grid-template-columns:1.1fr 0.9fr;gap:16px;margin-top:24px;
+    }
+    .gallery img{
+      width:100%;border-radius:16px;border:1px solid var(--line);display:block;
+      box-shadow:0 16px 40px rgba(30,20,10,0.12);
+      background:#fff;
+    }
+    .prices{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:24px;
+    }
+    .price-card{
+      background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;
+      position:relative;
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+    .price-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 40px rgba(30,20,10,0.12);
+    }
+    .price-card.hot{
+      border-color:#d8cabb;
+      box-shadow:0 18px 40px rgba(30,20,10,0.12);
+    }
+    .price{
+      font-size:26px;font-weight:800;margin:8px 0 4px;
+    }
+    .cta{
+      background:#efe6db;
+      border-radius:18px;padding:28px;display:grid;
+      grid-template-columns:1.1fr 0.9fr;gap:16px;align-items:center;
+      border:1px solid var(--line);
+    }
+    .cta input{
+      width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);margin-bottom:10px;
+      font-family:inherit;
+    }
+    .cta button{
+      width:100%;padding:12px 14px;border-radius:12px;border:none;
+      background:#2b2b2b;color:#fff;font-weight:700;
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+    .cta button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(30,20,10,0.18);
+    }
+    footer{
+      padding:36px 0;color:#7c756f;border-top:1px solid var(--line);
+    }
+    .fade-up{animation:fadeUp 0.8s ease both}
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(14px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    @media (max-width: 900px){
+      .hero-grid,.gallery,.cta{grid-template-columns:1fr}
+      h1{font-size:38px}
+    }
+    @media (max-width: 600px){
+      .nav-links{display:none}
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="wrap nav">
+      <div class="logo">MirrorVote<span>AI‑помощник выбора образа</span></div>
+      <nav class="nav-links">
+        <a href="#how">Как работает</a>
+        <a href="#features">Фишки</a>
+        <a href="#faq">FAQ</a>
+        <a href="#pricing">Цены</a>
+      </nav>
+      <a class="btn primary" href="#cta">Начать бесплатно</a>
+    </div>
+  </header>
 
-<header>
-<div class="logo">MirrorVote</div>
-<nav>
-<a href="#product">Продукт</a>
-<a href="#how">Как работает</a>
-<a href="#features">Функции</a>
-<a href="#pricing">Цены</a>
-<a class="btn-primary" href="#waitlist">Попробовать</a>
-</nav>
-</header>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="fade-up">
+        <h1>Выбирай образ легко и красиво</h1>
+        <p class="lead">
+          MirrorVote помогает сравнить 1–6 фото, получить AI‑оценку и быстрый совет друзей.
+          Никаких сомнений перед выходом.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn primary" href="#cta">Попробовать бесплатно</a>
+          <a class="btn" href="#how">Смотреть продукт</a>
+        </div>
+      </div>
+      <div class="hero-panel fade-up" style="animation-delay:0.1s">
+        <img class="hero-shot zoomable" src="images/Capture1.PNG" alt="Интерфейс MirrorVote" />
+      </div>
+    </div>
+  </section>
 
-<section class="hero">
-<div class="badge">AI Fashion Assistant</div>
-<h1>Не знаешь
-что надеть?</h1>
-<p>Загрузи несколько фото и получи AI‑оценку нарядов. MirrorVote помогает выбрать лучший образ за секунды.</p>
-<div class="cta">
-<a class="btn-primary" href="#waitlist">Попробовать бесплатно</a>
-<a class="btn-outline" href="#product">Смотреть продукт</a>
-</div>
+  <section id="how" class="section">
+    <div class="wrap">
+      <h2>Как это работает</h2>
+      <p class="sub">Все максимально просто и быстро.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Загрузи фото</h3>
+          <p>Добавь от 1 до 6 образов, которые хочешь сравнить.</p>
+          <img class="zoomable" src="images/app1.PNG" alt="Шаг 1 — загрузка фото" />
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Получи AI‑оценку</h3>
+          <p>Система учитывает сценарий, выравнивает фон и позу человека, дает рекомендации по образу.</p>
+          <img class="zoomable" src="images/app2.PNG" alt="Шаг 2 — AI‑оценка" />
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Спроси друзей</h3>
+          <p>Отправь ссылку и получи быстрые оценки.</p>
+          <img class="zoomable" src="images/app3.PNG" alt="Шаг 3 — голосование друзей" />
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="hero-product">
-<img src="https://dummyimage.com/900x500/f1f5f9/64748b&text=Product+Screenshot" />
-</div>
-</section>
+  <section id="features" class="section">
+    <div class="wrap">
+      <h2>Фишки, которые хочется попробовать</h2>
+      <p class="sub">MirrorVote создан для повседневной жизни, когда решение нужно сейчас.</p>
+      <div class="grid">
+        <div class="card wide">
+          <div class="pill">AI‑советы</div>
+          <h3>Под любой повод</h3>
+          <p>Офис, вечеринка, отдых - оценка образа для каждого случая.</p>
+          <div class="mode-row">
+            <img class="zoomable" src="images/mode1.PNG" alt="Режим 1" />
+            <img class="zoomable" src="images/mode2.PNG" alt="Режим 2" />
+            <img class="zoomable" src="images/mode3.PNG" alt="Режим 3" />
+          </div>
+        </div>
+        <div class="card">
+          <div class="pill">Simple Look</div>
+          <h3>Ровный фон и поза</h3>
+          <p>AI выравнивает фон и позу, делает сравнение честным.</p>
+        </div>
+        <div class="card">
+          <div class="pill">Голосование</div>
+          <h3>Быстрый фидбек</h3>
+          <p>Друзья голосуют без регистрации, все просто.</p>
+        </div>
+        <div class="card">
+          <div class="pill">Экспорт</div>
+          <h3>Сохрани результат</h3>
+          <p>Коллаж в один клик, чтобы поделиться.</p>
+        </div>
+        <div class="card">
+          <div class="pill">Сравнение</div>
+          <h3>Карусель и Выбор лучшего</h3>
+          <p>Удобный режим для выбора лучшего образа.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="product" class="section">
-<h2>AI помощник в примерочной</h2>
-<p class="subtitle">Сравнивайте образы, получайте рекомендации и принимайте решение быстрее</p>
+  <section id="pricing" class="section">
+    <div class="wrap">
+      <h2>Простая цена</h2>
+      <p class="sub">Выбирайте тариф под свой ритм.</p>
+      <div class="prices">
+        <div class="price-card">
+          <div class="pill">Бесплатно</div>
+          <h3>Начните бесплатно</h3>
+          <div class="price">0 руб</div>
+          <p>Безлимитное простое сравнение</p>
+          <p>5 AI‑обработок фото</p>
+          <p>5 AI‑оценок образов</p>
+        </div>
+        <div class="price-card hot">
+          <div class="pill">День</div>
+          <h3>Безлимитный день</h3>
+          <div class="price">100 руб</div>
+          <p>Безлимитный день примерок</p>
+          <p>AI‑обработка фото</p>
+          <p>AI‑оценки образов</p>
+          <p>Ссылка для оценки друзей</p>
+        </div>
+        <div class="price-card">
+          <div class="pill">Месяц</div>
+          <h3>Максимум на месяц</h3>
+          <div class="price">349 руб</div>
+          <p>Все возможности без ограничений</p>
+          <p>AI‑обработка и оценки</p>
+          <p>Ссылки для голосования</p>
+          <p>Экспорт результатов</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="grid">
-<div class="card">
-<h3>📸 Загружайте фото</h3>
-<p>Сфотографируйте наряды в примерочной или дома.</p>
-</div>
+  <section id="faq" class="section">
+    <div class="wrap">
+      <h2>FAQ</h2>
+      <p class="sub">Ответы на самые частые вопросы.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Как лучше сделать фотографию для максимума эффекта?</h3>
+          <p>Снимайте в ровном свете, на нейтральном фоне и с одинаковой позой на всех кадрах. Камеру держите на уровне груди, без сильных искажений.</p>
+        </div>
+        <div class="card">
+          <h3>Почему мое лицо изменилось?</h3>
+          <p>Simple Look выравнивает свет и фон, иногда это немного меняет восприятие черт. Мы не улучшаем лицо, а делаем кадры сопоставимыми.</p>
+        </div>
+        <div class="card">
+          <h3>Почему одежда немного другая?</h3>
+          <p>AI может слегка “сгладить” детали ткани при нормализации. Это не ретушь, а попытка убрать шум и тени, чтобы сравнение было честным.</p>
+        </div>
+        <div class="card">
+          <h3>Нужна ли регистрация, чтобы получить оценки друзей?</h3>
+          <p>Нет. Вы отправляете ссылку, друзья открывают и голосуют без регистрации.</p>
+        </div>
+        <div class="card">
+          <h3>Нужна ли регистрация, чтобы использовать?</h3>
+          <p>Нет, но история не будет сохраняться.</p>
+        </div>
+        <div class="card">
+          <h3>Сохраняется ли история примерок?</h3>
+          <p>Да, если пройти обычную регистрацию пользователя.</p>
+        </div>
+        <div class="card">
+          <h3>Безопасны ли мои фото?</h3>
+          <p>Мы не публикуем фото в открытом доступе. Ссылки на голосование доступны только тем, кому вы их отправили.</p>
+        </div>
+        <div class="card">
+          <h3>Что делать, если результат кажется странным?</h3>
+          <p>Попробуйте другой свет или фон. Если проблема повторяется, напишите нам — мы посмотрим, что можно улучшить.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<h3>🤖 AI анализирует</h3>
-<p>Алгоритм оценивает стиль, сочетание одежды и контекст события.</p>
-</div>
+  <section id="cta" class="section">
+    <div class="wrap cta">
+      <div>
+        <h2>Попробуй MirrorVote</h2>
+      </div>
+      <div>
+        <button type="button">Перейти на web‑версию</button>
+        <button type="button" style="margin-top:10px">Скачать приложение</button>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<h3>⭐ Лучший образ</h3>
-<p>Получите рекомендацию и выберите лучший вариант.</p>
-</div>
-</div>
-</section>
+  <footer>
+    <div class="wrap">
+      MirrorVote © 2026. AI‑помощник выбора образа.
+    </div>
+  </footer>
 
-<section id="how" class="section">
-<h2>Как это работает</h2>
-<p class="subtitle">3 шага чтобы выбрать идеальный образ</p>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Закрыть">×</button>
+    <img id="lightbox-img" alt="Полное изображение" />
+  </div>
 
-<div class="steps">
-<div class="step">
-<div class="step-number">Шаг 1</div>
-<h3>Загрузите фото</h3>
-<p>Добавьте 1–6 фотографий нарядов.</p>
-</div>
+  <script>
+    (function () {
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const closeBtn = lightbox.querySelector(".lightbox-close");
+      const zoomables = document.querySelectorAll(".zoomable");
 
-<div class="step">
-<div class="step-number">Шаг 2</div>
-<h3>AI анализирует</h3>
-<p>Система улучшает фото и анализирует стиль.</p>
-</div>
+      function openLightbox(src, alt) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || "Полное изображение";
+        lightbox.classList.add("active");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
 
-<div class="step">
-<div class="step-number">Шаг 3</div>
-<h3>Получите результат</h3>
-<p>Выберите лучший образ или спросите друзей.</p>
-</div>
-</div>
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImg.src = "";
+        document.body.style.overflow = "";
+      }
 
-<div class="demo-section">
-<h3>AI Demo</h3>
-<div class="demo-box">
-📸 Outfit A vs Outfit B → 🤖 AI Score → ⭐ Winner
-</div>
-</div>
-</section>
+      zoomables.forEach((img) => {
+        img.addEventListener("click", () => openLightbox(img.src, img.alt));
+      });
 
-<section id="features" class="section">
-<h2>Функции</h2>
-<p class="subtitle">Все инструменты чтобы выбрать лучший наряд</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>AI рекомендации</h3>
-<p>Оценка образа для офиса, свидания или вечеринки.</p>
-</div>
-
-<div class="card">
-<h3>Сравнение нарядов</h3>
-<p>Просматривайте образы в карусели.</p>
-</div>
-
-<div class="card">
-<h3>Голосование друзей</h3>
-<p>Отправьте ссылку и получите оценки.</p>
-</div>
-
-<div class="card">
-<h3>Simple Look</h3>
-<p>AI улучшает фото: чистый фон и студийный свет.</p>
-</div>
-
-<div class="card">
-<h3>Экспорт</h3>
-<p>Создайте коллаж и поделитесь результатом.</p>
-</div>
-
-<div class="card">
-<h3>Быстрые решения</h3>
-<p>Экономьте время при выборе одежды.</p>
-</div>
-
-</div>
-</section>
-
-<section class="section">
-<h2>Отзывы пользователей</h2>
-<p class="subtitle">Что говорят первые пользователи</p>
-
-<div class="testimonials">
-
-<div class="testimonial">
-<p>"Теперь я выбираю наряд за минуту. Очень удобно перед выходом."</p>
-<strong>Анна</strong>
-</div>
-
-<div class="testimonial">
-<p>"Функция голосования друзей — гениальная идея."</p>
-<strong>Михаил</strong>
-</div>
-
-<div class="testimonial">
-<p>"AI действительно помогает понять какой образ лучше."</p>
-<strong>Елена</strong>
-</div>
-
-</div>
-</section>
-
-<section id="pricing" class="section">
-<h2>Простая цена</h2>
-<p class="subtitle">Начните бесплатно</p>
-
-<div class="pricing">
-
-<div class="price-card">
-<h3>Free</h3>
-<div class="price">$0</div>
-<p>5 AI анализов</p>
-<p>Сравнение образов</p>
-<p>Голосование друзей</p>
-</div>
-
-<div class="price-card">
-<h3>Pro</h3>
-<div class="price">$8 <small>/ месяц</small></div>
-<p>Неограниченные анализы</p>
-<p>AI рекомендации</p>
-<p>Экспорт результатов</p>
-</div>
-
-</div>
-</section>
-
-<section id="waitlist" class="waitlist">
-<h2>Попробуйте MirrorVote</h2>
-<p>Оставьте email чтобы получить ранний доступ</p>
-<br/>
-<input placeholder="Ваш email" />
-<button>Join waitlist</button>
-</section>
-
-<footer>
-© 2026 MirrorVote · AI ассистент выбора одежды
-</footer>
-
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      closeBtn.addEventListener("click", closeLightbox);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+      });
+    })();
+  </script>
 </body>
 </html>
