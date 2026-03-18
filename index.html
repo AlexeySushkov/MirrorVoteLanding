@@ -189,6 +189,81 @@
       border:none;
       cursor:pointer;
     }
+    .promo-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(20,16,12,0.65);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:60;
+      padding:24px;
+    }
+    .promo-modal.active{display:flex;}
+    .promo-modal .content{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:24px;
+      max-width:520px;
+      width:min(92vw,520px);
+      box-shadow:0 30px 80px rgba(0,0,0,0.25);
+      text-align:center;
+    }
+    .promo-modal .code{
+      font-weight:800;
+      letter-spacing:0.08em;
+      font-size:20px;
+      border:1px dashed #c9bdb1;
+      padding:10px 16px;
+      border-radius:12px;
+      display:inline-block;
+      margin-top:10px;
+      background:#f7f2ea;
+    }
+    .promo-modal .code-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+    .promo-modal .copy-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      border:1px solid var(--ink);
+      background:transparent;
+      cursor:pointer;
+      transition:transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .promo-modal .copy-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 24px rgba(30,20,10,0.12);
+      background:#f7f2ea;
+    }
+    .promo-modal .copy-btn svg{
+      width:18px;
+      height:18px;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:1.8;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .promo-modal .close{
+      margin-top:16px;
+      padding:10px 16px;
+      border-radius:12px;
+      border:1px solid var(--ink);
+      background:transparent;
+      font-weight:600;
+      cursor:pointer;
+    }
     .step .num{
       width:34px;height:34px;border-radius:50%;
       display:flex;align-items:center;justify-content:center;
@@ -226,15 +301,22 @@
       border-radius:18px;padding:28px;display:grid;
       grid-template-columns:1.1fr 0.9fr;gap:16px;align-items:center;
       border:1px solid var(--line);
+      text-align:left;
+    }
+    .cta > div{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
     }
     .cta input{
       width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);margin-bottom:10px;
       font-family:inherit;
     }
     .cta button{
-      width:100%;padding:12px 14px;border-radius:12px;border:none;
+      width:auto;padding:12px 14px;border-radius:12px;border:none;
       background:#2b2b2b;color:#fff;font-weight:700;
       transition:transform 0.2s, box-shadow 0.2s;
+      align-self:flex-start;
     }
     .cta button:hover{
       transform:translateY(-2px);
@@ -277,7 +359,7 @@
         <h1>Выбирай образ легко и красиво</h1>
         <p class="lead">
           MirrorVote помогает сравнить 1–6 фото, получить AI‑оценку и быстрый совет друзей.
-          Никаких сомнений перед выходом.
+          Никаких сомнений перед выходом или покупкой.
         </p>
         <div class="hero-ctas">
           <a class="btn primary" href="#cta">Попробовать бесплатно</a>
@@ -366,25 +448,28 @@
           <h3>Начните бесплатно</h3>
           <div class="price">0 руб</div>
           <p>Безлимитное простое сравнение</p>
-          <p>5 AI‑обработок фото</p>
-          <p>5 AI‑оценок образов</p>
+          <p>AI-обработок фото - 5 примерок</p>
+          <p>AI-оценок образов - 5 примерок</p>
+          <p>5 ссылок для оценки образов</p>
         </div>
         <div class="price-card hot">
           <div class="pill">День</div>
           <h3>Безлимитный день</h3>
           <div class="price">100 руб</div>
           <p>Безлимитный день примерок</p>
-          <p>AI‑обработка фото</p>
-          <p>AI‑оценки образов</p>
-          <p>Ссылка для оценки друзей</p>
+          <p>AI-обработка фото</p>
+          <p>AI-оценки образов</p>
+          <p>Ссылка для оценки образов</p>
+          <p>Экспорт результатов</p>
         </div>
         <div class="price-card">
-          <div class="pill">Месяц</div>
-          <h3>Максимум на месяц</h3>
+          <div class="pill">Пакет</div>
+          <h3>Пакет 30 примерок</h3>
           <div class="price">349 руб</div>
-          <p>Все возможности без ограничений</p>
-          <p>AI‑обработка и оценки</p>
-          <p>Ссылки для голосования</p>
+          <p>Без ограничения по времени</p>
+          <p>AI-обработка фото</p>
+          <p>AI-оценки образов</p>
+          <p>Ссылка для оценки образов</p>
           <p>Экспорт результатов</p>
         </div>
       </div>
@@ -436,9 +521,9 @@
     <div class="wrap cta">
       <div>
         <h2>Попробуй MirrorVote</h2>
+        <button type="button">Перейти на web‑версию</button>
       </div>
       <div>
-        <button type="button">Перейти на web‑версию</button>
       </div>
     </div>
   </section>
@@ -448,6 +533,24 @@
       MirrorVote © 2026. AI‑помощник выбора образа.
     </div>
   </footer>
+
+  <div class="promo-modal" id="promo-modal" aria-hidden="true">
+    <div class="content">
+      <h3>Бесплатный код активации опции для новых пользователей</h3>
+      <div class="code-row">
+        <div class="code" id="promo-code">MIRRORVOTE2026</div>
+        <button class="copy-btn" type="button" aria-label="Скопировать код">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+            <rect x="4" y="4" width="11" height="11" rx="2"></rect>
+          </svg>
+        </button>
+      </div>
+      <div>
+        <button class="close" type="button">Закрыть</button>
+      </div>
+    </div>
+  </div>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lightbox-close" type="button" aria-label="Закрыть">×</button>
@@ -460,6 +563,11 @@
       const lightboxImg = document.getElementById("lightbox-img");
       const closeBtn = lightbox.querySelector(".lightbox-close");
       const zoomables = document.querySelectorAll(".zoomable");
+      const promoModal = document.getElementById("promo-modal");
+      const promoClose = promoModal.querySelector(".close");
+      const promoCode = document.getElementById("promo-code");
+      const promoCopy = promoModal.querySelector(".copy-btn");
+      const priceCards = document.querySelectorAll(".price-card");
 
       function openLightbox(src, alt) {
         lightboxImg.src = src;
@@ -476,16 +584,50 @@
         document.body.style.overflow = "";
       }
 
+      function openPromo() {
+        promoModal.classList.add("active");
+        promoModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closePromo() {
+        promoModal.classList.remove("active");
+        promoModal.setAttribute("aria-hidden", "true");
+      }
+
       zoomables.forEach((img) => {
         img.addEventListener("click", () => openLightbox(img.src, img.alt));
+      });
+
+      priceCards.forEach((card) => {
+        card.addEventListener("click", openPromo);
       });
 
       lightbox.addEventListener("click", (e) => {
         if (e.target === lightbox) closeLightbox();
       });
       closeBtn.addEventListener("click", closeLightbox);
+      promoModal.addEventListener("click", (e) => {
+        if (e.target === promoModal) closePromo();
+      });
+      promoClose.addEventListener("click", closePromo);
+      promoCopy.addEventListener("click", async () => {
+        const text = promoCode.textContent.trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          promoCopy.setAttribute("aria-label", "Код скопирован");
+          setTimeout(() => promoCopy.setAttribute("aria-label", "Скопировать код"), 1500);
+        } catch (err) {
+          // Fallback: select text for manual copy
+          const range = document.createRange();
+          range.selectNodeContents(promoCode);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+        }
+      });
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeLightbox();
+        if (e.key === "Escape") closePromo();
       });
     })();
   </script>
