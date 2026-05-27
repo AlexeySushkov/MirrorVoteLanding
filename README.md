@@ -28,7 +28,7 @@ index.html + images/ → /var/www/landing/ (mirror-vote.ru)
 
 | Канал | Адрес |
 |-------|-------|
-| Telegram | [@mirrorvote](https://t.me/MirrorVote_bot) |
+| Telegram | [@MirrorVote_bot](https://t.me/MirrorVote_bot) |
 | Email | [mirror-vote@yandex.ru](mailto:mirror-vote@yandex.ru) |
 
 ## Лицензия
