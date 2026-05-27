@@ -25,5 +25,5 @@ jobs:
       - name: Deploy via rsync
         run: |
           rsync -avz --delete \
-            index.html images/ \
+            index.html images \
             webuser@mirror-vote.ru:/var/www/landing/
