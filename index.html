@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MirrorVote — стильный выбор за минуту</title>
+  <title>MirrorVote - AI‑помощник в примерочной</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -39,10 +40,16 @@
       padding:16px 0;
     }
     .logo{
+      display:flex;align-items:center;gap:10px;
       font-family:"Playfair Display", serif;
       font-weight:600;font-size:18px;letter-spacing:0.4px;
     }
-    .logo span{
+    .logo-emblem{
+      flex-shrink:0;
+      border-radius:8px;
+      display:block;
+    }
+    .logo-text span{
       display:block;
       font-family:"Josefin Sans", system-ui, sans-serif;
       font-size:12px;
@@ -322,6 +329,34 @@
       transform:translateY(-2px);
       box-shadow:0 12px 28px rgba(30,20,10,0.18);
     }
+    .contact-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:14px;margin-top:24px;
+    }
+    .contact-card{
+      display:flex;align-items:center;gap:14px;
+      background:#fff;border:1px solid var(--line);border-radius:16px;
+      padding:18px 20px;
+      transition:transform 0.2s, box-shadow 0.2s;
+      cursor:pointer;
+    }
+    .contact-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 40px rgba(30,20,10,0.12);
+    }
+    .contact-icon{flex-shrink:0;line-height:0}
+    .contact-info{
+      display:flex;flex-direction:column;gap:3px;flex:1;
+    }
+    .contact-label{
+      font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#8a837c;
+    }
+    .contact-value{
+      font-size:15px;font-weight:600;color:var(--ink);
+    }
+    .contact-arrow{
+      font-size:18px;color:#c9bdb1;margin-left:auto;flex-shrink:0;
+    }
     footer{
       padding:36px 0;color:#7c756f;border-top:1px solid var(--line);
     }
@@ -342,12 +377,16 @@
 <body>
   <header>
     <div class="wrap nav">
-      <div class="logo">MirrorVote<span>AI‑помощник выбора образа</span></div>
+      <div class="logo">
+        <img class="logo-emblem" src="images/logo.svg" width="36" height="36" alt="MirrorVote logo">
+        <div class="logo-text">MirrorVote<span>AI‑помощник выбора образа</span></div>
+      </div>
       <nav class="nav-links">
         <a href="#how">Как работает</a>
         <a href="#features">Фишки</a>
         <a href="#faq">FAQ</a>
         <a href="#pricing">Цены</a>
+        <a href="#contact">Контакты</a>
       </nav>
       <a class="btn primary" href="#cta">Начните бесплатно</a>
     </div>
@@ -423,16 +462,16 @@
         <div class="card">
           <div class="pill">Голосование</div>
           <h3>Быстрый фидбек</h3>
-          <p>Друзья голосуют без регистрации, все просто.</p>
+          <p>Друзья голосуют по ссылке без регистрации, все просто.</p>
         </div>
         <div class="card">
-          <div class="pill">Экспорт</div>
-          <h3>Сохрани результат</h3>
-          <p>Коллаж в один клик, чтобы поделиться.</p>
+          <div class="pill">Фавориты</div>
+          <h3>Сохраняй лучшие образы в фаворитах</h3>
+          <p>Быстро находи и выбирай для любого повода.</p>
         </div>
         <div class="card">
           <div class="pill">Сравнение</div>
-          <h3>Карусель и Выбор лучшего</h3>
+          <h3>Карусель и выбор лучшего</h3>
           <p>Удобный режим для выбора лучшего образа.</p>
         </div>
       </div>
@@ -449,19 +488,18 @@
           <h3>Начните бесплатно</h3>
           <div class="price">0 руб</div>
           <p>Безлимитное простое сравнение</p>
-          <p>AI-обработок фото - 3 AI оценки</p>
-          <p>AI-оценок образов - 3 AI оценки</p>
-          <p>3 ссылки для оценки образов</p>
+          <p>Безлимитные ссылки для оценки образов</p>
+          <p>3 AI-обработки фото</p>
+          <p>3 AI-оценки образов</p>
         </div>
         <div class="price-card hot">
           <div class="pill">Пакет 5</div>
           <h3>Пакет 5 AI оценок</h3>
           <div class="price">100 руб</div>
           <p>Без ограничения по времени</p>
-
+          <p>Ссылка для оценки образов</p>
           <p>AI-обработка фото</p>
           <p>AI-оценки образов</p>
-          <p>Ссылка для оценки образов</p>
           <p>Экспорт результатов</p>
         </div>
         <div class="price-card">
@@ -469,9 +507,9 @@
           <h3>Пакет 20 AI оценок</h3>
           <div class="price">300 руб</div>
           <p>Без ограничения по времени</p>
+          <p>Ссылка для оценки образов</p>
           <p>AI-обработка фото</p>
           <p>AI-оценки образов</p>
-          <p>Ссылка для оценки образов</p>
           <p>Экспорт результатов</p>
         </div>
       </div>
@@ -485,7 +523,7 @@
       <div class="grid">
         <div class="card">
           <h3>Как лучше сделать фотографию для максимума эффекта?</h3>
-          <p>Снимайте в ровном свете, на нейтральном фоне и с одинаковой позой на всех кадрах. Камеру держите на уровне груди, без сильных искажений.</p>
+          <p>Снимайте в ровном свете, в полный рост, на нейтральном фоне и с одинаковой позой на всех кадрах. Камеру держите на уровне груди.</p>
         </div>
         <div class="card">
           <h3>Почему мое лицо изменилось?</h3>
@@ -501,11 +539,7 @@
         </div>
         <div class="card">
           <h3>Нужна ли регистрация, чтобы использовать?</h3>
-          <p>Нет, но история не будет сохраняться.</p>
-        </div>
-        <div class="card">
-          <h3>Сохраняется ли история примерок?</h3>
-          <p>Да, если пройти обычную регистрацию пользователя.</p>
+          <p>Нет, можно войти в гостевом режиме, но история примерок не будет сохраняться.</p>
         </div>
         <div class="card">
           <h3>Безопасны ли мои фото?</h3>
@@ -513,7 +547,11 @@
         </div>
         <div class="card">
           <h3>Что делать, если результат кажется странным?</h3>
-          <p>Попробуйте другой свет или фон. Если проблема повторяется, напишите нам — мы посмотрим, что можно улучшить.</p>
+          <p>Попробуйте другой свет или фон. Если проблема повторяется, напишите нам — посмотрим, что можно улучшить.</p>
+        </div>
+        <div class="card">
+          <h3>Есть ли интеграция с онлайн магазинами и маркетплейсами?</h3>
+          <p>Да, есть интеграция по API, цена по запросу.</p>
         </div>
       </div>
     </div>
@@ -523,16 +561,56 @@
     <div class="wrap cta">
       <div>
         <h2>Попробуй MirrorVote</h2>
-        <a class="btn primary" href="https://mirror-vote.ru/app/" target="_blank" rel="noopener">Перейти в приложение</a>
+        <a class="btn primary" href="https://mirror-vote.ru/app/" target="_blank" rel="noopener">
+          <img src="images/logo.svg" width="20" height="20" alt="" aria-hidden="true" style="border-radius:5px;flex-shrink:0">
+          Перейти в приложение
+        </a>
       </div>
       <div>
       </div>
     </div>
   </section>
 
+  <section id="contact" class="section" style="padding-bottom:40px">
+    <div class="wrap">
+      <h2>Обратная связь</h2>
+      <p class="sub">Есть вопрос, идея или что-то пошло не так? Напишите нам:</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="https://t.me/MirrorVote" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+          <span class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="14" cy="14" r="14" fill="#2b2b2b"/>
+              <path d="M6.5 13.6l3.8 1.5 1.5 4.7c.1.3.5.4.7.2l2.1-1.7 4.1 3c.3.2.7 0 .8-.3l2.9-10.4c.1-.4-.3-.8-.7-.6L6.5 12.7c-.4.1-.4.7 0 .9z" fill="#f6f1ea"/>
+              <path d="M10.3 15.1l.6 3.9 1.5-2.9" stroke="#2b2b2b" stroke-width="0.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="contact-info">
+            <span class="contact-label">Telegram</span>
+            <span class="contact-value">@mirrorvote</span>
+          </span>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a class="contact-card" href="mailto:mirror-vote@yandex.ru" aria-label="Написать на почту">
+          <span class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="14" cy="14" r="14" fill="#2b2b2b"/>
+              <rect x="6" y="9" width="16" height="11" rx="2" stroke="#f6f1ea" stroke-width="1.4" fill="none"/>
+              <path d="M6 10l8 6 8-6" stroke="#f6f1ea" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="contact-info">
+            <span class="contact-label">Почта</span>
+            <span class="contact-value">mirror-vote@yandex.ru</span>
+          </span>
+          <span class="contact-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="wrap">
-      MirrorVote © 2026. AI‑помощник выбора образа.
+      MirrorVote © 2026. AI‑помощник выбора образа. ИНН 470500475174
     </div>
   </footer>
 
