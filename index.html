@@ -566,7 +566,9 @@
           Перейти в приложение
         </a>
       </div>
-      <div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+        <div id="qr-app" style="background:#fff;padding:10px;border-radius:12px;line-height:0;box-shadow:0 2px 12px rgba(0,0,0,0.08)"></div>
+        <span style="font-size:13px;color:#888;letter-spacing:0.01em">Открыть с телефона</span>
       </div>
     </div>
   </section>
@@ -707,6 +709,17 @@
         if (e.key === "Escape") closePromo();
       });
     })();
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    new QRCode(document.getElementById("qr-app"), {
+      text: "https://mirror-vote.ru/app/",
+      width: 140,
+      height: 140,
+      colorDark: "#2b2b2b",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
   </script>
 </body>
 </html>
