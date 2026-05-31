@@ -566,7 +566,11 @@
           Перейти в приложение
         </a>
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-          <div id="qr-app" style="background:#fff;padding:10px;border-radius:12px;line-height:0;box-shadow:0 2px 12px rgba(0,0,0,0.08)"></div>
+          <div style="position:relative;display:inline-block;background:#fff;padding:12px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.12)">
+            <div id="qr-app" style="line-height:0"></div>
+            <img src="images/logo.svg" width="38" height="38" alt=""
+              style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:8px;padding:4px;pointer-events:none">
+          </div>
           <span style="font-size:13px;color:#888;letter-spacing:0.01em">Открыть с телефона</span>
         </div>
       </div>
@@ -714,11 +718,11 @@
   <script>
     new QRCode(document.getElementById("qr-app"), {
       text: "https://mirror-vote.ru/app/",
-      width: 140,
-      height: 140,
+      width: 160,
+      height: 160,
       colorDark: "#2b2b2b",
       colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.M
+      correctLevel: QRCode.CorrectLevel.H
     });
   </script>
 </body>
